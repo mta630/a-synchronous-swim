@@ -14,7 +14,24 @@ module.exports.initialize = (queue) => {
 
 module.exports.router = (req, res, next = ()=>{}) => {
   console.log('Serving request type ' + req.method + ' for url ' + req.url);
-  res.writeHead(200, headers);
-  res.end();
-  next(); // invoke next() at the end of a request to help with testing!
+  console.log(req.url);
+  if (req.method === 'GET') {
+    if (req.url === '/') {
+      res.writeHead(200, headers);
+      res.end(messageQueue.dequeue());
+    }
+
+    if (req.url === '/?command=random') {
+      res.writeHead(200, headers);
+      res.end(randomSwimDirection());
+    }
+
+  }
+
+  next();
 };
+
+var randomSwimDirection = () => {
+  var options = ['up', 'down', 'left', 'right'];
+  return options[Math.floor(Math.random() * 4)];
+}

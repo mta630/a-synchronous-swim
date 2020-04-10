@@ -6,6 +6,26 @@
   // TODO: build the swim command fetcher here
   //
 
+  const fetchRandomCommand = () => {
+    $.ajax({
+      type: 'GET',
+      data: {
+        command: 'random'
+      },
+      url: serverUrl,
+      success: (response) => {
+        SwimTeam.move(response);
+      },
+      fail: (response) => {
+        console.log(failure);
+        console.log(response);
+      },
+      complete: () => setTimeout(fetchRandomCommand, 2000)
+    });
+  };
+
+  fetchRandomCommand();
+
   /////////////////////////////////////////////////////////////////////
   // The ajax file uplaoder is provided for your convenience!
   // Note: remember to fix the URL below.
@@ -17,7 +37,7 @@
     $.ajax({
       type: 'POST',
       data: formData,
-      url: 'FILL_ME_IN',
+      url: serverUrl,
       cache: false,
       contentType: false,
       processData: false,
