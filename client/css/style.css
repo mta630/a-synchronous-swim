@@ -1,18 +1,57 @@
 html {
-  font-family: Arial;
+  font-family: sans-serif;
 }
-h3 {
+
+.title {
   margin-bottom: 5px;
+  text-align: center;
+  font-size: 30px;
 }
+
+body {
+  background-color: #C1E0F7;
+}
+
 .pool {
+  border: 3px solid black;
   position: relative;
   font-size: 400%;
   padding: 100px;
   height: 202px;
   width: 622px;
 }
+
+.other-stuff-container {
+  text-align: center;
+  width: 500px;
+  margin: auto;
+  padding-bottom: 20px;
+}
+
 .background {
   background-image: url(http://127.0.0.1:3000/background.jpg);
+}
+
+button {
+  background-color: #F58F29;
+  border: none;
+  height: 30px;
+
+}
+
+button:hover {
+  background-color: #FFD12B;
+  cursor: pointer;
+}
+
+.background-choices {
+  margin-top: 10px;
+  border: 1px solid grey;
+  text-align: center;
+  padding-bottom: 10px;
+  width: 500px;
+  margin: auto;
+  border-radius: 2px;
 }
 .team {
   position: absolute;

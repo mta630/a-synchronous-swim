@@ -1,23 +1,34 @@
 <html>
 <head>
   <link rel="stylesheet" type="text/css" href="/css/style.css">
+  <script src="https://kit.fontawesome.com/c57fca7a66.js" crossorigin="anonymous"></script>
 </head>
 <body>
-  <h1>A Synchronous Swim</h1>
+  <div class="title">
+    <h1>A Synchronous Swim</h1>
+  </div>
   <div class="pool">
     <div class="team">
-      <div class="swimmer">↜</div>
-      <div class="swimmer">↜</div>
-      <div class="swimmer">↜</div>
-      <div class="swimmer">↜</div>
+      <div class="swimmer"><img src="https://vignette.wikia.nocookie.net/mugen/images/6/6c/SuigyoEnguardeIdle.gif/revision/latest?cb=20170524192147"/></div>
+      <div class="swimmer"><img src="https://vignette.wikia.nocookie.net/mugen/images/6/6c/SuigyoEnguardeIdle.gif/revision/latest?cb=20170524192147"/></div>
+      <div class="swimmer"><img src="https://vignette.wikia.nocookie.net/mugen/images/6/6c/SuigyoEnguardeIdle.gif/revision/latest?cb=20170524192147"/></div>
+      <div class="swimmer"><img src="https://vignette.wikia.nocookie.net/mugen/images/6/6c/SuigyoEnguardeIdle.gif/revision/latest?cb=20170524192147"/></div>
     </div>
   </div>
-  <h3>Background Image Upload</h3>
-  <form>
-    <input type="file" class="file" /><br>
-    <input type="submit" />
-  </form>
-  <button id="random">RANDOM MOVEMENT</button>
+  <div class="other-stuff-container">
+    <h3>Background Image Upload</h3>
+    <form>
+      <input type="file" class="file" /><br>
+      <input type="submit" />
+    </form>
+    <button id="random">RANDOM MOVEMENT</button>
+  </div>
+  <div class='background-choices'>
+    <p>Choose a background!</p>
+    <button id='background-one'>Background 1</button>
+    <button id='background-two'>Background 2</button>
+    <button id='background-three'>Background 3</button>
+  </div>
 </body>
 <script src="/node_modules/jquery/dist/jquery.js"></script>
 <script src="/node_modules/underscore/underscore.js"></script>

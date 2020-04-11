@@ -14,6 +14,7 @@ module.exports.initialize = (queue) => {
 
 module.exports.router = (req, res, next = ()=>{}) => {
   console.log('Serving request type ' + req.method + ' for url ' + req.url);
+  res.setHeader('Access-Control-Allow-Origin', '*');
   if (req.method === 'GET') {
     if (req.url === '/') {
       res.writeHead(200, headers);
@@ -26,7 +27,7 @@ module.exports.router = (req, res, next = ()=>{}) => {
     }
 
     if (req.url === '/?move=move') {
-      res.writeHead(200, headers);
+      res.writeHead(200, headers)
       var check = false;
       while (!check) {
         var messageToSend = messageQueue.dequeue();
@@ -38,6 +39,13 @@ module.exports.router = (req, res, next = ()=>{}) => {
         }
 
       }
+    }
+
+    if (req.url === '/?background=1') {
+      fs.readFile(this.backgroundImageFile, (err, data) => {
+        if (err) throw err;
+        res.end(data);
+      })
     }
 
   }

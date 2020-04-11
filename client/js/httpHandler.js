@@ -7,24 +7,24 @@
   //
 
   // ==========================REQUEST FOR GETTING RANDOM COMMANDS EVERY 2 SECONDS====================================
-  //
-  // const fetchRandomCommand = () => {
-  //   $.ajax({
-  //     type: 'GET',
-  //     data: {
-  //       command: 'random'
-  //     },
-  //     url: serverUrl,
-  //     success: (response) => {
-  //       SwimTeam.move(response);
-  //     },
-  //     fail: (response) => {
-  //       console.log(failure);
-  //       console.log(response);
-  //     },
-  //     complete: () => setTimeout(fetchRandomCommand, 2000)
-  //   });
-  // };
+
+  const fetchRandomCommand = () => {
+    $.ajax({
+      type: 'GET',
+      data: {
+        command: 'random'
+      },
+      url: serverUrl,
+      success: (response) => {
+        SwimTeam.move(response);
+      },
+      fail: (response) => {
+        console.log(failure);
+        console.log(response);
+      },
+      complete: () => setTimeout(fetchRandomCommand, 2000)
+    });
+  };
 
 
     const fetchCommand = () => {
@@ -41,7 +41,29 @@
       })
     }
 
+    const getBackground = (backgroundNumber) => {
+      $.ajax({
+        type: 'GET',
+        data: {
+          background: backgroundNumber
+        },
+        url: serverUrl,
+        success: (data) => {
+          var $img = $('<img id="background-one">');
+          $img.attr("src", data)
+          console.log(data);
+          $img.appendTo($('.pool'));
+        }
+      })
+    }
+
   fetchCommand();
+
+  $('#background-one').click((event) => {
+    getBackground(1);
+  })
+
+
   /////////////////////////////////////////////////////////////////////
   // The ajax file uplaoder is provided for your convenience!
   // Note: remember to fix the URL below.
