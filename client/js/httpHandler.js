@@ -41,27 +41,8 @@
       })
     }
 
-    const getBackground = (backgroundNumber) => {
-      $.ajax({
-        type: 'GET',
-        data: {
-          background: backgroundNumber
-        },
-        url: serverUrl,
-        success: (data) => {
-          var $img = $('<img id="background-one">');
-          $img.attr("src", data)
-          console.log(data);
-          $img.appendTo($('.pool'));
-        }
-      })
-    }
 
   fetchCommand();
-
-  $('#background-one').click((event) => {
-    getBackground(1);
-  })
 
 
   /////////////////////////////////////////////////////////////////////
@@ -75,12 +56,13 @@
     $.ajax({
       type: 'POST',
       data: formData,
-      url: serverUrl,
+      url: serverUrl + '/background.jpg',
       cache: false,
       contentType: false,
       processData: false,
       success: () => {
         // reload the page
+        console.log('success');
         window.location = window.location.href;
       }
     });
