@@ -6,26 +6,42 @@
   // TODO: build the swim command fetcher here
   //
 
-  const fetchRandomCommand = () => {
-    $.ajax({
-      type: 'GET',
-      data: {
-        command: 'random'
-      },
-      url: serverUrl,
-      success: (response) => {
-        SwimTeam.move(response);
-      },
-      fail: (response) => {
-        console.log(failure);
-        console.log(response);
-      },
-      complete: () => setTimeout(fetchRandomCommand, 2000)
-    });
-  };
+  // ==========================REQUEST FOR GETTING RANDOM COMMANDS EVERY 2 SECONDS====================================
+  //
+  // const fetchRandomCommand = () => {
+  //   $.ajax({
+  //     type: 'GET',
+  //     data: {
+  //       command: 'random'
+  //     },
+  //     url: serverUrl,
+  //     success: (response) => {
+  //       SwimTeam.move(response);
+  //     },
+  //     fail: (response) => {
+  //       console.log(failure);
+  //       console.log(response);
+  //     },
+  //     complete: () => setTimeout(fetchRandomCommand, 2000)
+  //   });
+  // };
 
-  fetchRandomCommand();
 
+    const fetchCommand = () => {
+      $.ajax({
+        type: 'GET',
+        data: {
+          move: 'move'
+        },
+        url: serverUrl,
+        success: (res) => {
+          SwimTeam.move(res);
+        },
+        complete: () => setTimeout(fetchCommand, 500)
+      })
+    }
+
+  fetchCommand();
   /////////////////////////////////////////////////////////////////////
   // The ajax file uplaoder is provided for your convenience!
   // Note: remember to fix the URL below.
